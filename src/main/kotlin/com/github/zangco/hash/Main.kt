@@ -11,15 +11,6 @@ private fun hashString(bytes: ByteArray): String{
     return bytes.joinToString(transform = {String.format("%02x", it)}, separator = "-")
 }
 
-fun hashString(path: String) : String {
-    var file = File(path)
-    val hash = FileInputStream(file).use { stream ->
-        hash(stream)
-    }
-    val result = hashString(hash)
-    return result
-}
-
 fun hash(path: String) : ByteArray {
     var file = File(path)
     val hash = FileInputStream(file).use { stream ->
